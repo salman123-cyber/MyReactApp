@@ -1,0 +1,18 @@
+# syntax=docker/dockerfile:1
+FROM ubuntu:24.04
+
+WORKDIR /test-project/
+
+# install app
+COPY public/ /test-project/public
+COPY src/ /test-project/src
+COPY package.json /test-project/
+
+RUN apt-get update
+RUN apt-get install
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+#COPY /test-project/src/App.js /
+
+# final configuration
+CMD ["npm", "start"]
